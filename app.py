@@ -9,6 +9,7 @@ from trendingmovies import copyoftrending
 from srs import series_recommend
 import gdown
 import os
+
 st.set_page_config(layout="wide")
 st.title(" ☄️ MARS")
 

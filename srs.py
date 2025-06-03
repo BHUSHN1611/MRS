@@ -1,10 +1,26 @@
 import pickle
 import pandas as pd
 import requests
+import gdown
+import os
+def download_file_from_drive(file_id, output_path):
+    if not os.path.exists(output_path):
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, output_path, quiet=False)
 
-series_dict = pickle.load( open("series_dict.pkl",'rb'))
-series = pd.DataFrame(series_dict)
-series_similarity = pickle.load(open("series_similarity.pkl", "rb"))
+download_file_from_drive("1d_AHPlpChPGI9wxz-GOP1ARR_aoTHjB1", "series_dict.pkl")
+download_file_from_drive("1F52fg4Mn35J_847GgDnbzZS4-pDgRkH_", "series_similarity.pkl")
+
+with open("series_dict.pkl",'rb') as f:
+    series_dict = pickle.load(f)
+    series = pd.DataFrame(series_dict)
+with open("series_similarity.pkl", "rb") as f:
+    series_similarity = pickle.load(f)
+
+
+# series_dict = pickle.load( open("series_dict.pkl",'rb'))
+# series = pd.DataFrame(series_dict)
+# series_similarity = pickle.load(open("series_similarity.pkl", "rb"))
 
 def fetch_serieposter(serie_name):
     response = requests.get(

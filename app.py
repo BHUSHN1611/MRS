@@ -33,9 +33,9 @@ def download_file_from_drive(file_id, output_path):
 
 # Download if not exists
 download_file_from_drive("1ixZ6CyHsN17vh0TiQihlUCqEqQDjwwDj", "movie_dict.pkl")
-download_file_from_drive("1d_AHPlpChPGI9wxz-GOP1ARR_aoTHjB1", "series_dict.pkl")
+# download_file_from_drive("1d_AHPlpChPGI9wxz-GOP1ARR_aoTHjB1", "series_dict.pkl")
 download_file_from_drive("1iy-YtS1Vzj5e0zBEacYT4DW9Jkohsleu", "similarity.pkl")
-download_file_from_drive("1F52fg4Mn35J_847GgDnbzZS4-pDgRkH_", "series_similarity.pkl")
+# download_file_from_drive("1F52fg4Mn35J_847GgDnbzZS4-pDgRkH_", "series_similarity.pkl")
 
 # Load the pickles
 
@@ -420,7 +420,7 @@ if st.session_state.page == "Movies":
         index=None,
         placeholder='Search movie '
     )
-    if st.button('Show Recommendation'):
+    if st.button('Show Recommendation', type="primary"):
         try:
             if (selected_movie):
                 recommended_movie_names, recommended_movie_posters,recommended_movie_rating = recommend(selected_movie)
@@ -478,7 +478,7 @@ elif st.session_state.page == "Series":
         index=None,
         placeholder='Search a serie'
     )
-    if st.button("Show Recommendation"):
+    if st.button("Show Recommendation",type="primary"):
         try:
             if (selected_serie):
                 recommend_series_name,series_posterpath,series_rating  = series_recommend(selected_serie)
@@ -534,7 +534,7 @@ elif st.session_state.page == "Ai recommendation":
                                       ("movies","series"),index=None,placeholder='Select a serie/movie')
     ai_selctedai_selcted_content = st.text_input(label="Search a serie/movie", placeholder='Search a serie/movie')
 
-    if st.button("Search"):
+    if st.button("Search",type="primary"):
         try:
 
             prompt_gen(ai_selcted_content_type,ai_selctedai_selcted_content)
